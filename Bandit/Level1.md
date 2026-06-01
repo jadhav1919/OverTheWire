@@ -4,20 +4,53 @@
 
 ## Objective
 
-Find the password for Bandit Level 2.
+Use the password obtained from Bandit Level 0 to log in to Bandit Level 1 and find the password for Bandit Level 2.
 
-# Challenge
+# Step 1: Log in to Bandit Level 1
 
-A file named `-` exists in the home directory.
+In the previous level, we discovered the password for the `bandit1` user.
 
-The password for the next level is stored inside this file.
+Using that password, we connect to the Bandit server as `bandit1`.
 
-# Step 1: List Files
+### Command
+
+```bash
+ssh bandit1@bandit.labs.overthewire.org -p 2220
+```
+
+### General Syntax
+
+```bash
+ssh <username>@<hostname> -p <port>
+```
+
+### Explanation
+
+| Part     | Meaning                            |
+| -------- | ---------------------------------- |
+| ssh      | Secure Shell client                |
+| username | User account to log in as          |
+| hostname | Remote server address              |
+| -p       | Specifies the port number          |
+| 2220     | SSH port used by the Bandit server |
+
+After running the command, enter the password obtained from Bandit Level 0.
+
+
+# Step 2: Examine the Current Directory
+
+After successfully logging in, list the files present in the current directory.
 
 ### Command
 
 ```bash
 ls
+```
+
+### General Syntax
+
+```bash
+ls [options] [directory]
 ```
 
 ### Output
@@ -26,21 +59,29 @@ ls
 -
 ```
 
-A file named `-` is present.
+A file named `-` is present in the directory.
 
 
-# Step 2: Read the File
+# Step 3: Try Reading the File
 
-### Attempt
+A natural first attempt is:
+
+### Command
 
 ```bash
 cat -
 ```
 
-This does not work as expected because Linux treats `-` as a special symbol.
+### Result
+
+This does not work as expected.
+
+Linux treats `-` as a special symbol rather than a normal filename.
 
 
-# Step 3: Access the File Using a Relative Path
+# Step 4: Access the File Using a Relative Path
+
+To tell Linux that `-` is a filename, specify its path explicitly.
 
 ### Command
 
@@ -52,17 +93,37 @@ cat ./-
 
 `./` refers to the current directory.
 
-By specifying the path, Linux understands that `-` is a filename and not a special symbol.
+By adding `./`, Linux understands that `-` is a file located in the current directory.
 
 ### Breakdown
 
-| Part | Meaning |
-|--------|---------|
-| . | Current directory |
-| / | Path separator |
-| - | Filename |
+| Part | Meaning           |
+| ---- | ----------------- |
+| .    | Current directory |
+| /    | Path separator    |
+| -    | Filename          |
+
+### Result
+
+The contents of the file are displayed.
+
+The displayed text is the password for Bandit Level 2.
+
+![Bandit Level 0](Screenshots/p4p.png) 
 
 # Commands Used
+
+## SSH
+
+### Purpose
+
+Connect to a remote Linux machine.
+
+### Syntax
+
+```bash
+ssh <username>@<hostname> -p <port>
+```
 
 ## LS
 
@@ -76,12 +137,11 @@ List files and directories.
 ls [options] [directory]
 ```
 
-
 ## CAT
 
 ### Purpose
 
-Display file contents.
+Display the contents of a file.
 
 ### Syntax
 
@@ -89,9 +149,10 @@ Display file contents.
 cat <filename>
 ```
 
+
 # New Concept Learned
 
-## Relative Path
+## Relative Paths
 
 ### Syntax
 
@@ -101,13 +162,15 @@ cat <filename>
 
 ### Purpose
 
-Access a file in the current directory.
+Refers to a file located in the current directory.
 
-Useful when filenames contain special characters such as:
+This is useful when filenames contain special characters or names that Linux may interpret differently.
+
+### Examples
 
 ```text
 -
-space
+file with spaces
 $
 *
 ?
@@ -116,18 +179,20 @@ $
 
 # Commands Mentioned by OverTheWire
 
-| Command | Purpose |
-|----------|----------|
-| ls | List files |
-| cd | Change directory |
-| cat | Display file contents |
-| file | Determine file type |
-| du | Show disk usage |
-| find | Search for files |
+| Command | Purpose                          |
+| ------- | -------------------------------- |
+| ls      | List files and directories       |
+| cd      | Change directory                 |
+| cat     | Display file contents            |
+| file    | Identify file type               |
+| du      | Display disk usage               |
+| find    | Search for files and directories |
+
 
 # Key Takeaways
 
-- Learned that filenames can contain special characters.
-- Learned that `-` has a special meaning in Linux.
-- Learned how to use a relative path (`./`) to access files.
-- Obtained the password for Bandit Level 2.
+* Used the password from Bandit Level 0 to log in as `bandit1`.
+* Learned that filenames can contain special characters.
+* Learned that `-` has a special meaning in Linux.
+* Learned how to use a relative path (`./`) to access files.
+* Obtained the password for Bandit Level 2.
