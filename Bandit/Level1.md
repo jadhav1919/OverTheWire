@@ -6,10 +6,6 @@
 
 Find the password for Bandit Level 2.
 
-## Screenshot
-
-![Bandit Level 1](Screenshots/Bandit-Level1.png)
-
 # Challenge
 
 A file named `-` exists in the home directory.
