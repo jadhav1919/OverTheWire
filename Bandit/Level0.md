@@ -1,5 +1,7 @@
 # Bandit Level 0
 
+![Bandit Level 0](Screenshots/p0p.png) 
+
 ## Objective
 
 Connect to the Bandit server and find the password for Bandit Level 1.
