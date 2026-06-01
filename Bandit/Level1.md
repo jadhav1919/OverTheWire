@@ -1,24 +1,20 @@
 # Bandit Level 1
 
+![Bandit Level 0](Screenshots/p3p.png) 
+
 ## Objective
 
 Find the password for Bandit Level 2.
 
----
-
 ## Screenshot
 
 ![Bandit Level 1](Screenshots/Bandit-Level1.png)
-
----
 
 # Challenge
 
 A file named `-` exists in the home directory.
 
 The password for the next level is stored inside this file.
-
----
 
 # Step 1: List Files
 
@@ -36,7 +32,6 @@ ls
 
 A file named `-` is present.
 
----
 
 # Step 2: Read the File
 
@@ -48,7 +43,6 @@ cat -
 
 This does not work as expected because Linux treats `-` as a special symbol.
 
----
 
 # Step 3: Access the File Using a Relative Path
 
@@ -72,8 +66,6 @@ By specifying the path, Linux understands that `-` is a filename and not a speci
 | / | Path separator |
 | - | Filename |
 
----
-
 # Commands Used
 
 ## LS
@@ -88,7 +80,6 @@ List files and directories.
 ls [options] [directory]
 ```
 
----
 
 ## CAT
 
@@ -101,8 +92,6 @@ Display file contents.
 ```bash
 cat <filename>
 ```
-
----
 
 # New Concept Learned
 
@@ -129,8 +118,6 @@ $
 !
 ```
 
----
-
 # Commands Mentioned by OverTheWire
 
 | Command | Purpose |
@@ -141,8 +128,6 @@ $
 | file | Determine file type |
 | du | Show disk usage |
 | find | Search for files |
-
----
 
 # Key Takeaways
 
