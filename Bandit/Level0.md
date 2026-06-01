@@ -13,7 +13,7 @@ Command:
 ```bash
 ssh bandit0@bandit.labs.overthewire.org -p 2220
 ```
-![Bandit Level 0](Screenshots/p1.png) 
+![Bandit Level 0](Screenshots/p1p.png) 
 
 ## General Format
 
